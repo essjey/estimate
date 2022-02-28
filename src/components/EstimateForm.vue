@@ -11,7 +11,7 @@
             <button @click="sortHighest">High</button>
             <h3>Current Estimates:</h3>
             <!-- list estimates, show filtered list based on estimateNumber -->
-            <div v-for="estimate in filteredEstimates" :key="estimate.number" class="found">
+            <div v-for="estimate in filteredEstimates" :key="estimate.number" class="found" @click="getEstInfo(estimate.number)">
                 {{ estimate.name }} | {{ estimate.number }}
             </div>
         </main>
@@ -43,6 +43,9 @@ export default {
       },
       sortHighest() {
           this.estimates.sort((a, b) => a.number < b.number ? 1 : -1)
+      }, 
+      getEstInfo(event) {
+          console.log(this, event)
       }
   },
   computed: {
