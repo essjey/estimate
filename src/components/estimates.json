@@ -1,0 +1,37 @@
+[
+    {
+      "number": "123456789",
+      "name": "flyer 01",
+      "stock": "80lb White Linen",
+      "size": "8.5x11",
+      "color": "4/0"
+    },
+    {
+      "number": "83410",
+      "name": "flyer 02",
+      "stock": "25lb White Linen",
+      "size": "8.5x11",
+      "color": "4/4"
+    },
+    {
+      "number": "11112",
+      "name": "flyer 03",
+      "stock": "400lb White Linen",
+      "size": "8.5x11",
+      "color": "1/0"
+    },
+    {
+      "number": "54321",
+      "name": "postcard 01",
+      "stock": "80lb White Linen",
+      "size": "6x9",
+      "color": "6/4"
+    },
+    {
+      "number": "83001",
+      "name": "test entry #5",
+      "stock": "80lb transparent vinyl",
+      "size": "36x84",
+      "color": "4/0"
+    }
+]

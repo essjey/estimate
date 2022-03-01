@@ -8,10 +8,6 @@ import EstimateForm from './components/EstimateForm.vue'
 <style>
 @import "./assets/base.css";
 
-body {
-    place-items: top center;
-}
-
 #app {
     max-width: 1280px;
     margin: 0 auto;
@@ -36,16 +32,4 @@ a,
     }
 }
 
-@media (min-width: 1024px) {
-    body {
-        display: flex;
-        place-items: center;
-    }
-
-    /* #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  } */
-}
 </style>

@@ -1,5 +1,6 @@
 <script setup>
     import IconCopy from './icons/IconCopy.vue'
+    import estimatesData from './estimates.json'
 </script>
 
 <template>
@@ -8,37 +9,43 @@
       <h1>YGS::test</h1>
     </header>
     <main>
-      <input v-model="searchText" placeholder="search..." required />
-      <button @click="sortAZ">A-Z</button>
-      <button @click="sortZA">Z-A</button>
-      <button @click="sortLowest">Low</button>
-      <button @click="sortHighest">High</button>
-      <h3>Current Estimates:</h3>
-      <div
-        v-for="estimate in filteredEstimates"
-        :key="estimate.number"
-        class="estimate"
-      >
-        <div class="estimate--info">
-          <h4>{{ estimate.number }}</h4>
-          <p>{{ estimate.name }}</p>
-          <p>{{ estimate.stock }}</p>
-          <p>{{ estimate.size }}</p>
-          <p>{{ estimate.color }}</p>
-        </div>
-        <button
-          class="estimate--copy-btn"
-          @click="getEstInfo($event)"
-          v-bind="{
-            'data-estimate': estimate.number,
-            'data-name': estimate.name,
-            'data-stock': estimate.stock,
-            'data-size': estimate.size,
-            'data-color': estimate.color,
-          }"
+      <div class="left">
+        <aside class="controls">
+          <input v-model="searchText" placeholder="search..." required />
+          <button @click="sortAZ">A-Z</button>
+          <button @click="sortZA">Z-A</button>
+          <button @click="sortLowest">Low</button>
+          <button @click="sortHighest">High</button>
+        </aside>
+      </div>
+      <div class="right">
+        <h3>Current Estimates:</h3>
+        <div
+          v-for="estimate in filteredEstimates"
+          :key="estimate.number"
+          class="estimate"
         >
-          <IconCopy />
-        </button>
+          <div class="estimate--info">
+            <h4>{{ estimate.number }}</h4>
+            <p>{{ estimate.name }}</p>
+            <p>{{ estimate.stock }}</p>
+            <p>{{ estimate.size }}</p>
+            <p>{{ estimate.color }}</p>
+          </div>
+          <button
+            class="estimate--copy-btn"
+            @click="getEstInfo($event)"
+            v-bind="{
+              'data-estimate': estimate.number,
+              'data-name': estimate.name,
+              'data-stock': estimate.stock,
+              'data-size': estimate.size,
+              'data-color': estimate.color,
+            }"
+          >
+            <IconCopy />
+          </button>
+        </div>
       </div>
     </main>
   </div>
@@ -49,36 +56,7 @@ export default {
   data() {
     return {
       searchText: "",
-      estimates: [
-        {
-          number: "12345",
-          name: "flyer 01",
-          stock: "80lb White Linen",
-          size: '8.5"x11"',
-          color: "4/0",
-        },
-        {
-          number: "83410",
-          name: "flyer 02",
-          stock: "25lb White Linen",
-          size: '8.5"x11"',
-          color: "4/4",
-        },
-        {
-          number: "11112",
-          name: "flyer 03",
-          stock: "400lb White Linen",
-          size: '8.5"x11"',
-          color: "1/0",
-        },
-        {
-          number: "54321",
-          name: "postcard 01",
-          stock: "80lb White Linen",
-          size: '6"x9"',
-          color: "6/4",
-        },
-      ],
+      estimates: estimatesData,
     };
   },
   methods: {
@@ -215,7 +193,14 @@ h1 {
         }
     }
 }
+main {
+  display: flex;
+  flex-direction: column;
+}
 @media (min-width: 1024px) {
+  h1 {
+    padding: 0 20px;
+  }
   header {
     display: flex;
     place-items: center;
@@ -225,6 +210,26 @@ h1 {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
+  }
+  main {
+    flex-direction: row;
+    
+    .left, .right {
+      flex: 0 0 50%;
+      padding: 20px;
+    }
+
+    .left {
+      max-width: 300px;
+      aside {
+        position: sticky;
+        top: 20px;
+      }
+    }
+    .right {
+      min-width: 400px;
+      flex-grow: 2;
+    }
   }
 }
 </style>
