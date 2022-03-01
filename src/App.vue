@@ -6,40 +6,43 @@ import EstimateForm from './components/EstimateForm.vue'
   <EstimateForm />
 </template>
 <style>
-@import './assets/base.css';
+@import "./assets/base.css";
+
+body {
+    place-items: top center;
+}
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-weight: normal;
 }
 
 header {
-  line-height: 1.5;
+    line-height: 1.5;
 }
-
 
 a,
 .green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+    text-decoration: none;
+    color: hsla(160, 100%, 37%, 1);
+    transition: 0.4s;
 }
 
 @media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+    a:hover {
+        background-color: hsla(160, 100%, 37%, 0.2);
+    }
 }
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+    body {
+        display: flex;
+        place-items: center;
+    }
 
-  /* #app {
+    /* #app {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
