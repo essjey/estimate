@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <script setup>
     import IconCopy from './icons/IconCopy.vue'
 </script>
@@ -46,7 +44,6 @@
   </div>
 </template>
 
->>>>>>> dev
 <script>
 export default {
   data() {
@@ -139,27 +136,6 @@ export default {
   },
 };
 </script>
-
-
-<template>
-    <div>
-        <header>
-            <h1>YGS::test</h1>
-        </header>
-        <main>
-            <input v-model="searchText" placeholder="search..." required/>
-            <button @click="sortAZ">A-Z</button>
-            <button @click="sortZA">Z-A</button>
-            <button @click="sortLowest">Low</button>
-            <button @click="sortHighest">High</button>
-            <h3>Current Estimates:</h3>
-            <!-- list estimates, show filtered list based on estimateNumber -->
-            <div v-for="estimate in filteredEstimates" :key="estimate.number" class="found">
-                {{ estimate.name }} | {{ estimate.number }}
-            </div>
-        </main>
-    </div>
-</template>
 
 <style lang="scss" scoped>
 input,
