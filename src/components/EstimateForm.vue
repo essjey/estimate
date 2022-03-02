@@ -63,28 +63,28 @@ export default {
   },
   methods: {
     sortAZ() {
-      this.estimates.sort((a, b) => (a.name > b.name ? 1 : -1));
+      this.estimates.sort((a, b) => (a.name > b.name ? 1 : -1))
     },
     sortZA() {
-      this.estimates.sort((a, b) => (a.name < b.name ? 1 : -1));
+      this.estimates.sort((a, b) => (a.name < b.name ? 1 : -1))
     },
     sortLowest() {
-      this.estimates.sort((a, b) => (a.number > b.number ? 1 : -1));
+      this.estimates.sort((a, b) => (a.number > b.number ? 1 : -1))
     },
     sortHighest() {
-      this.estimates.sort((a, b) => (a.number < b.number ? 1 : -1));
+      this.estimates.sort((a, b) => (a.number < b.number ? 1 : -1))
     },
     copyContent(event) {
-      let content = event.target.innerText;
-      console.log(this.copyMessage, content);
-      navigator.clipboard.writeText(content);
+      let content = event.target.innerText
+      console.log(this.copyMessage, content)
+      navigator.clipboard.writeText(content)
     },
     copyEstInfo(event) {
-      let est = event.target.getAttribute('data-estimate');
-      let name = event.target.getAttribute('data-name');
-      let stock = event.target.getAttribute('data-stock');
-      let size = event.target.getAttribute('data-size');
-      let color = event.target.getAttribute('data-color');
+      let est = event.target.getAttribute('data-estimate')
+      let name = event.target.getAttribute('data-name')
+      let stock = event.target.getAttribute('data-stock')
+      let size = event.target.getAttribute('data-size')
+      let color = event.target.getAttribute('data-color')
 
       console.log(this.copyMessage);
 
@@ -100,7 +100,7 @@ export default {
         `${est}, ${name}, ${stock}, ${size}, ${color}`
       );
 
-      return {est, name, stock, size, color};
+      return {est, name, stock, size, color}
     },
   },
   computed: {
