@@ -6,7 +6,7 @@
 <template>
   <div class="estimate-wrapper">
     <header>
-      <h1>YGS::test</h1>
+      <h1>YGS::Tools</h1>
     </header>
     <main>
       <div class="left">
