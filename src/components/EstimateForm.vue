@@ -58,6 +58,7 @@ export default {
     return {
       searchText: '',
       estimates: estimatesData,
+      copyMessage: 'the following information has been copied to your clipboard:',
     };
   },
   methods: {
@@ -73,12 +74,9 @@ export default {
     sortHighest() {
       this.estimates.sort((a, b) => (a.number < b.number ? 1 : -1));
     },
-    copyMessage(){ 
-      return 'the following information has been copied to your clipboard:'
-    },
     copyContent(event) {
       let content = event.target.innerText;
-      console.log(this.copyMessage(), content);
+      console.log(this.copyMessage, content);
       navigator.clipboard.writeText(content);
     },
     copyEstInfo(event) {
@@ -88,7 +86,7 @@ export default {
       let size = event.target.getAttribute('data-size');
       let color = event.target.getAttribute('data-color');
 
-      console.log(this.copyMessage());
+      console.log(this.copyMessage);
 
       console.table({
         Estimate: est,
