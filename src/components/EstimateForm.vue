@@ -26,15 +26,15 @@
           class="estimate"
         >
           <div class="estimate--info">
-            <h4>{{ estimate.number }}</h4>
-            <p>{{ estimate.name }}</p>
-            <p>{{ estimate.stock }}</p>
-            <p>{{ estimate.size }}</p>
-            <p>{{ estimate.color }}</p>
+            <h4 @click="copyContent($event)">{{ estimate.number }}</h4>
+            <p @click="copyContent($event)">{{ estimate.name }}</p>
+            <p @click="copyContent($event)">{{ estimate.stock }}</p>
+            <p @click="copyContent($event)">{{ estimate.size }}</p>
+            <p @click="copyContent($event)">{{ estimate.color }}</p>
           </div>
           <button
             class="estimate--copy-btn"
-            @click="getEstInfo($event)"
+            @click="copyEstInfo($event)"
             v-bind="{
               'data-estimate': estimate.number,
               'data-name': estimate.name,
@@ -43,6 +43,7 @@
               'data-color': estimate.color,
             }"
           >
+            Copy
             <IconCopy />
           </button>
         </div>
@@ -55,7 +56,7 @@
 export default {
   data() {
     return {
-      searchText: "",
+      searchText: '',
       estimates: estimatesData,
     };
   },
@@ -72,18 +73,22 @@ export default {
     sortHighest() {
       this.estimates.sort((a, b) => (a.number < b.number ? 1 : -1));
     },
-    getEstInfo(event) {
-      let est = event.target.getAttribute("data-estimate");
-      let name = event.target.getAttribute("data-name");
-      let stock = event.target.getAttribute("data-stock");
-      let size = event.target.getAttribute("data-size");
-      let color = event.target.getAttribute("data-color");
+    copyMessage(){ 
+      return 'the following information has been copied to your clipboard:'
+    },
+    copyContent(event) {
+      let content = event.target.innerText;
+      console.log(this.copyMessage(), content);
+      navigator.clipboard.writeText(content);
+    },
+    copyEstInfo(event) {
+      let est = event.target.getAttribute('data-estimate');
+      let name = event.target.getAttribute('data-name');
+      let stock = event.target.getAttribute('data-stock');
+      let size = event.target.getAttribute('data-size');
+      let color = event.target.getAttribute('data-color');
 
-      console.log(event);
-
-      console.log(
-        "the following information has been copied to your clipboard:"
-      );
+      console.log(this.copyMessage());
 
       console.table({
         Estimate: est,
@@ -102,7 +107,7 @@ export default {
   },
   computed: {
     filteredEstimates() {
-      let filter = new RegExp(this.searchText, "i");
+      let filter = new RegExp(this.searchText, 'i');
       return this.estimates.filter(
         (el) =>
           el.number.match(filter) ||
@@ -167,11 +172,37 @@ h1 {
     p:last-child {
         margin-bottom: 0px;
     }
+    &--info {
+      > * {
+        cursor: pointer;
 
-    &--info p {
+        &:after {
+          content: 'Copy';
+          display: inline;
+          opacity: 0;
+          position: relative;
+          font-size: 12px;
+          left: 10px;
+          top: 0;
+          background-color: var(--vt-c-black-soft);
+          padding: 0px 5px 2px;
+          border-radius: 4px;
+          transition: .15s opacity ease;
+        }
+        &:hover::after {
+          opacity: 1;
+        }
+      }
+      p {
         font-size: 14px;
+      }
     }
     &--copy-btn {
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1em;
+        margin-top: -2em;
+        color: var(--text-color);
         cursor: pointer;
         box-sizing: content-box;
         padding: 0px;
@@ -184,6 +215,7 @@ h1 {
         background-color: transparent;
 
         svg {
+            margin-top: 5px;
             // removing this will break click event
             pointer-events: none;
         }
