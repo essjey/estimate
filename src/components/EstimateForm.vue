@@ -100,7 +100,7 @@ export default {
         `${est}, ${name}, ${stock}, ${size}, ${color}`
       );
 
-      return est, name, stock, size, color;
+      return {est, name, stock, size, color};
     },
   },
   computed: {
